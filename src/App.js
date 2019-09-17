@@ -40,7 +40,7 @@ function App() {
     })
   }, []);
 
-  // the table is being filtered when the input field is filled with 3 or more characters. Instead all names are showed by default.
+  // the table is being filtered when the input field is filled with 3 or more characters. If not, all names are showed by default.
   const filterPeople = (data) => {
     if(data.length >= 3){
       axios.get('http://localhost:3000/people/by-name/' + data)
