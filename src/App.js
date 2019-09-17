@@ -32,8 +32,9 @@ function App() {
   useEffect(() => {
     axios.get('http://localhost:3000/people')
     .then((people)=>{
-        setPeople(people.data);
-        setPeopleFiltered(people.data)
+        const orderedList = people.data.sort((p1, p2) => (p1.firstName > p2.firstName) ? 1 : -1)
+        setPeople(orderedList);
+        setPeopleFiltered(orderedList)
       })
     .catch((err)=>{
       console.log(err)
@@ -93,7 +94,7 @@ function App() {
         </Grid>
         <Grid item xs={4}>
           <p>People length</p>
-          <p>{people.length}</p>
+          <p>{peopleFiltered.length}</p>
         </Grid>
       </Grid>
     </div>
